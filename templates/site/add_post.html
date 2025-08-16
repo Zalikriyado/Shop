@@ -1,0 +1,21 @@
+{% extends 'site/base.html' %}
+{% block title %} Home {% endblock %}
+
+{% block content %}
+    <main class="container mx-auto py-12 px-4">
+        <div class="bg-white max-w-md mx-auto rounded-3xl p-8 shadow-2xl">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center gradient-text">Yangi Post Qo‘shish</h2>
+            <form class="space-y-4" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input name='title' type="text" placeholder="Post Sarlavhasi" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <input name='user' type="number" hidden value="{{ request.user.id }}">
+                <textarea name='desc' rows="6" placeholder="Post Matni" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+                <input name="img" type="file" accept="image/*" class="w-full p-3 border border-gray-300 rounded-lg">
+                <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-green-500 text-white py-3 rounded-lg hover:from-blue-700 hover:to-green-600 transition-all duration-300">Postni Yuborish</button>
+            </form>
+        </div>
+    </main>
+
+
+
+{% endblock %}
